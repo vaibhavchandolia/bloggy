@@ -3,7 +3,7 @@ import { useState } from "react"
 const Navbar = () => {
 
   const [Open, setOpen] = useState(false)
-
+// Navbar
   return (
     <div className='w-full h-16 md:20 flex items-center justify-between'>
       {/* Logo */}
