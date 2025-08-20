@@ -5,11 +5,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Homepage from './routes/Homepage.jsx'
 import PostListPage from './routes/PostListPage.jsx'
 import Write from './routes/Write.jsx'
-import Login from './routes/Login.jsx'
 import SinglePostPage from './routes/SinglePostPage.jsx'
 import RegisterPage from './routes/RegisterPage.jsx'
 import MainLayout from './layouts/MainLayout.jsx'
 import { ClerkProvider } from '@clerk/clerk-react'
+import LoginPage from './routes/LoginPage.jsx'
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/login',
-        element: <Login />
+        element: <LoginPage />
       },
       {
         path: '/register',
