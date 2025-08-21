@@ -1,6 +1,15 @@
+import { Link } from "react-router-dom"
+
 const Homepage = () => {
   return (
-    <div className=''>Homepage</div>
+    <div className='mt-4 flex flex-col gap-4'>
+      {/* BREADCRUMB */}
+      <div className="flex gap-4">
+        <Link to="/" />
+        <span className="">•</span>
+        <span className="">Blogs and Articles</span>
+      </div>
+    </div>
   )
 }
 
