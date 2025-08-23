@@ -8,6 +8,7 @@ const Homepage = () => {
         <Link to="/" />
         <span className="">•</span>
         <span className="">Blogs and Articles</span>
+        <span className="">Title</span>
       </div>
     </div>
   )
