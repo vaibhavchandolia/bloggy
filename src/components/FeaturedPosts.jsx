@@ -7,7 +7,7 @@ const FeaturedPosts = () => {
         {/* firstpost */}
         <div className="w-full lg:w-1/2 flex flex-col gap-4 ">
             {/* Image */}
-            <Img src="featured1.jpeg" classname="rounded-3xl object-cover" />
+            <Img src="featured1.jpeg" className="rounded-3xl object-cover" w="895" />
             {/* details */}
             <div className="flex items-center gap-4">
               <h1 className="font-semibold items-center gap-4">01.</h1>
@@ -21,7 +21,9 @@ const FeaturedPosts = () => {
         <div className="w-full lg:w-1/2 flex flex-col gap-4">
           {/* second */}
           <div className="lg:h-1/3 flex justify-between gap-4">
-            <Img src="featured2.jpeg" classname="rounded-3xl object cover w-1/3 aspect-video" />
+            <div className="w-1/3 aspect-video">
+              <Img src="featured2.jpeg" className="rounded-3xl object cover w-full h-full" w="298" />
+            </div>
             {/* details & title */}
             <div className="w-2/3">
               {/* details  */}
@@ -38,7 +40,9 @@ const FeaturedPosts = () => {
           </div>
           {/* third */}
           <div className="lg:h-1/3 flex justify-between gap-4">
-            <Img src="featured2.jpeg" classname="rounded-3xl object cover w-1/3 aspect-video" />
+            <div className="w-1/3 aspect-video">
+              <Img src="featured2.jpeg" className="rounded-3xl object cover w-full h-full" w="298" />
+            </div>
             {/* details & title */}
             <div className="w-2/3">
               {/* details  */}
@@ -55,7 +59,9 @@ const FeaturedPosts = () => {
           </div>
           {/* fourth */}
           <div className="lg:h-1/3 flex justify-between gap-4">
-            <Img src="featured2.jpeg" classname="rounded-3xl object cover w-1/3 aspect-video" />
+            <div className="w-1/3 aspect-video">
+              <Img src="featured2.jpeg" className="rounded-3xl object cover w-full h-full" w="298" />
+            </div>
             {/* details & title */}
             <div className="w-2/3">
               {/* details  */}
