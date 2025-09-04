@@ -1,9 +1,13 @@
 import express from "express"
-import userRouter from "./routes/user.route"
-import postRouter from "./routes/post.route"
-import commentRouter from "./routes/comment.route"
+import userRouter from "./routes/user.route.js"
+import postRouter from "./routes/post.route.js"
+import commentRouter from "./routes/comment.route.js"
 
 const app = express()
+
+app.get("/test", (req,res)=>{
+    res.status(200).send("it works!")
+})
 
 console.log(process.env.test)
 
