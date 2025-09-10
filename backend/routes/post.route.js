@@ -1,12 +1,10 @@
 import express from "express"
-// import Post from "../models/post.model"
+import { getPosts } from "../controllers/post.controller.js"
 
 const router = express.Router()
 
-router.get("/", async (req,res)=>{
-
-    // const posts = await Post.find()
-    res.send("Hello Postman")
-})
+router.get("/", getPosts)
+router.get("/:slug", getPosts)
+router.post("/", createPosts)
 
 export default router
