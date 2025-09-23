@@ -23,3 +23,6 @@ export const deletePost = async (req, res) => {
     const post = await Post.findByIdAndDelete(req.params.id)
     res.status(200).json("post has been deleted")
 }
+
+
+

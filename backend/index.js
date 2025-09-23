@@ -3,9 +3,11 @@ import connectDB from "./lib/connectDB.js"
 import userRouter from "./routes/user.route.js"
 import postRouter from "./routes/post.route.js"
 import commentRouter from "./routes/comment.route.js"
+import webHookRouter from "./routes/webhook.route.js"
 
 const app = express()
 
+app.use("/webhooks", webHookRouter)
 // middleware to accept json
 app.use(express.json())
 
