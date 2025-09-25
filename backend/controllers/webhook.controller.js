@@ -1,10 +1,11 @@
 import User from "../models/user.model.js"
+import { Webhook } from "svix"
 
 export const clerkWebhook = async (req, res) => {
     
     const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET
 
-    if(!WEBHOOK_SECRET){
+    if (!WEBHOOK_SECRET) {
         throw new Error("Webhook Secret Needed!")
     }
 
@@ -15,17 +16,19 @@ export const clerkWebhook = async (req, res) => {
     let evt;
     try {
         evt = wh.verify(payload, headers);
-    } catch (err) {
+    }   catch (err) {
         res.status(400).json({
             message: "Webhook verification faiiled!"
         });
     }
 
-    if (evt.type === "user.created") {
-        const newUser = new UserActivation({
+    console.log(evt.data)
 
-        })
-        console.log("userId:", evt.data.id)
-    }
+    // if (evt.type === "user.created") {
+    //     const newUser = new UserActivation({
+ 
+    //     })
+    //     console.log("userId:", evt.data.id)
+    // }
 
-}
+};

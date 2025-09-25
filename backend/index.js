@@ -11,11 +11,11 @@ app.use("/webhooks", webHookRouter)
 // middleware to accept json
 app.use(express.json())
 
-app.get("/test", (req,res)=>{
-    res.status(200).send("it works!")
-})
+// app.get("/test", (req,res)=>{
+//     res.status(200).send("it works!")
+// })
 
-// console.log(process.env.test)
+// console.log(process.env.CLERK_WEBHOOK_SECRET)
 
 app.use("/users", userRouter)
 app.use("/posts", postRouter)
