@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@clerk/express": "^1.7.50",
     "body-parser": "^2.2.0",
     "express": "^5.1.0",
     "mongodb": "^7.0.0",
