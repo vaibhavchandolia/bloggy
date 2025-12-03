@@ -16,14 +16,14 @@ const Write = () => {
   const [img, setImg] = useState("");
   const [video, setVideo] = useState("");
   const [progress, setProgress] = useState(0);
-  
+
   useEffect(() => {
-    img && setValue(prev=>prev+`<p><image src="${img.url}"/></p>`)
-  },[img])
-  
+    img && setValue(prev => prev + `<p><image src="${img.url}"/></p>`);
+  }, [img]);
+
   useEffect(() => {
-    img && setValue(prev=>prev+`<p><iframe class='ql-video src="${video.url}"/></p>`)
-  },[video])
+    video && setValue(prev => prev + `<p><iframe class="ql-video"  src="${video.url}"/></p>`,);
+  }, [video]);
 
   const navigate = useNavigate();
 
@@ -57,12 +57,12 @@ const Write = () => {
     const formData = new FormData(e.target);
 
     const data = {
+      img: cover.filePath || "",
       title: formData.get("title"),
       category: formData.get("category"),
       desc: formData.get("desc"),
       content: value,
-    };
-    console.log(data);
+    };    
     mutation.mutate(data);
   };
 
@@ -71,7 +71,7 @@ const Write = () => {
       <h1 className="text-xl font-light">Create a New Post</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-6 flex-1 mb-6">
         <Upload type="image" setProgress={setProgress} setData={setCover}>
-          <button className="w-max p-2 shadow-md rounded-xl text-sm text-gray-500 bg-white">
+          <button type="button" className="w-max p-2 shadow-md rounded-xl text-sm text-gray-500 bg-white">
             Add a cover image<div className=""></div>
           </button>
         </Upload>
@@ -94,8 +94,8 @@ const Write = () => {
             <option value="web-design">Web Design</option>
             <option value="development">Development</option>
             <option value="databases">Databases</option>
-            <option value="seop">Search Engines</option>
-            <option value="Marketing">Marketing</option>
+            <option value="seo">Search Engines</option>
+            <option value="marketing">Marketing</option>
           </select>
         </div>
         <textarea
@@ -108,7 +108,7 @@ const Write = () => {
             <Upload type="image" setProgress={setProgress} setData={setImg}>
               🌆
             </Upload>
-            <Upload type="image" setProgress={setProgress} setData={setVideo}>
+            <Upload type="video" setProgress={setProgress} setData={setVideo}>
               ▶️
             </Upload>
           </div>
