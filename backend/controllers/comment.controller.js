@@ -10,27 +10,31 @@ export const getPostComments = async (req, res) => {
 };
 
 export const addComment = async (req, res) => {
-  const clerkUserId = req.auth.user.id;
+  const clerkUserId = req.auth.userId;
   const postId = req.params.postId;
 
   if (!clerkUserId) {
     return res.status(401).json("Not authenticated!");
   }
 
-  const user = User.findOne({ clerkUserId });
+  const user = await User.findOne({ clerkUserId });
 
   const newComment = new Comment({
     ...req.body,
     user: user._id,
-    posts: postId,
+    post: postId,
   });
 
   const savedComment = await newComment.save();
+  
+  setTimeout(() => {
+    res.status(201).json(savedComment);
+  }, 3000)
 
-  res.status(201).json(savedComment);
 };
+
 export const deleteComment = async (req, res) => {
-  const clerkUserId = req.auth.user.id;
+  const clerkUserId = req.auth().user.id;
   const id = req.params.idd;
 
   if (!clerkUserId) {
@@ -43,10 +47,10 @@ export const deleteComment = async (req, res) => {
     _id: id,
     user: user._id,
   });
-  
-  if(!deletedComment){
-    return res.status(403).json("You can only delete only your comment!")
+
+  if (!deletedComment) {
+    return res.status(403).json("You can only delete only your comment!");
   }
-  
+
   res.status(200).json("Comment deleted successfully");
 };

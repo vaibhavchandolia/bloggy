@@ -1,7 +1,7 @@
 import Comment from "./Comment";
 import axios from "axios";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useAuth } from "@clerk/clerk-react";
+import { useAuth, useUser } from "@clerk/clerk-react";
 import { toast } from "react-toastify";
 
 const fetchComments = async (postId) => {
@@ -13,6 +13,7 @@ const fetchComments = async (postId) => {
 };
 
 const Comments = ({ postId }) => {
+  const {user} =  useUser()
   const { getToken } = useAuth();
 
   const { isPending, error, data } = useQuery({
@@ -43,12 +44,10 @@ const Comments = ({ postId }) => {
     },
   });
 
-  if (isPending) return "Loading...";
-  if (error) return "Something went wrong" + error.message;
-
-  const handlesubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
+    // console.log(formData)
 
     const data = {
       desc: formData.get("desc"),
@@ -56,11 +55,13 @@ const Comments = ({ postId }) => {
     mutation.mutate(data);
   };
 
+  console.log(data);
+
   return (
-    <div className="flex flex-col gap-8 lg:w-3/5">
+    <div className="flex flex-col gap-8 lg:w-3/5 mb-12">
       <h1 className="text-xl text-gray-500 underline">Comments</h1>
       <form
-        onSubmit={handlesubmit}
+        onSubmit={handleSubmit}
         className="flex items-center justify-between gap-8 w-full"
       >
         <textarea
@@ -72,9 +73,30 @@ const Comments = ({ postId }) => {
           Send
         </button>
       </form>
-      {data.map((comment) => {
-        <Comment key={comment._id} comment={comment} />;
-      })}
+      {isPending ? (
+        "Loading..."
+        ) : error ?
+        (
+          "Error laoding comment!"
+        ) : (
+       <>
+         {mutation.isPending && (
+             <Comment 
+                comment={{
+                  desc: `${mutation.variables.desc} (Sending...)`,
+                  createdAt: new Date(),
+                  user:  {
+                    img: user.imageUrl,
+                    username: user.username,
+                    },
+                }}
+             />
+         )}
+         {data?.map((comment) => (
+             <Comment key={comment._id} comment={comment} />
+         ))}
+       </>
+      )}
     </div>
   );
 };
