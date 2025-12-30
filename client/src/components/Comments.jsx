@@ -8,7 +8,6 @@ const fetchComments = async (postId) => {
   const res = await axios.get(
     `${import.meta.env.VITE_API_URL}/comments/${postId}`,
   );
-  // console.log(res.data)
   return res.data;
 };
 
@@ -47,15 +46,12 @@ const Comments = ({ postId }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    // console.log(formData)
 
     const data = {
       desc: formData.get("desc"),
     };
     mutation.mutate(data);
   };
-
-  console.log(data);
 
   return (
     <div className="flex flex-col gap-8 lg:w-3/5 mb-12">

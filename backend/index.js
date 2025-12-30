@@ -48,8 +48,6 @@ app.use(function(req, res, next) {
 //     res.status(200).send("it works!")
 // })
 
-// console.log(process.env.CLERK_WEBHOOK_SECRET)
-
 app.use("/users", userRouter);
 app.use("/posts", postRouter);
 app.use("/comments", commentRouter);

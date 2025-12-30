@@ -96,12 +96,10 @@ const PostMenuActions = ({ post }) => {
   });
 
   const handleDelete = () => {
-    console.log("deletefn");
     deleteMutation.mutate();
   };
 
   const handleFeature = () => {
-    console.log("deletefn");
     featureMutation.mutate();
   };
 
@@ -111,8 +109,6 @@ const PostMenuActions = ({ post }) => {
     }
     saveMutation.mutate();
   };
-
-  console.log(isSaved);
 
   return (
     <div className="">

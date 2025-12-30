@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 const connectDB = async () => {
-  // console.log("fn is running"
   try {
     console.log("hello!!");
     await mongoose.connect(process.env.MONGO);

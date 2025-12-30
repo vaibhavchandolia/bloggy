@@ -5,7 +5,6 @@ const SideMenu = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleFilterChange = (e) => {
-    // console.log(e.target.value + "from filterchange");
     if (searchParams.get("sort") !== e.target.value) {
       setSearchParams({
         ...Object.fromEntries(searchParams.entries()),
@@ -16,7 +15,6 @@ const SideMenu = () => {
   
   
   const handleCategoryChange = (category) => {
-    console.log("here")
     if (searchParams.get("cat") !== category) {
       setSearchParams({
         ...Object.fromEntries(searchParams.entries()),

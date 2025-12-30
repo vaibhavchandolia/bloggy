@@ -10,7 +10,6 @@ const Navbar = () => {
 
   useEffect(() => {
     getToken().then((token) => {
-      // console.log(token);
     });
   }, []);
 
@@ -19,7 +18,7 @@ const Navbar = () => {
     <div className="w-full h-16 md:20 flex items-center justify-between">
       {/* Logo */}
       <Link to="/" className="flex items-center gap-4 text-2xl font-blod">
-        <Img src="/logo.png" alt="lama logo" w={32} h={32} />
+        <Img src="/logo1.png" alt="lama logo" w={32} h={32} />
         <span>Bloggy</span>
       </Link>
       {/* Mobile Menu */}

@@ -8,7 +8,6 @@ import { useEffect } from "react";
 const fetchPosts = async (pageParam, searchParams) => {
   
   const searchParamsObj = Object.fromEntries([...searchParams])
-  // console.log(searchParamsObj)
   
   const res = await axios.get(`${import.meta.env.VITE_API_URL}/posts`, {
     params: { page: pageParam, limit: 10, ...searchParamsObj },
@@ -37,14 +36,12 @@ const Postlist = () => {
       lastPage.hasMore ? pages.length + 1 : undefined,
   });
 
-  // console.log(data);
 
   if (status === "loading") return "Loading...";
 
   if (status === "error") return "something went wrong!";
 
   const allPosts = data?.pages?.flatMap((page) => page.posts) || [];
-  // console.log(data);
 
   return (
     <InfiniteScroll
