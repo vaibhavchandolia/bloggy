@@ -14,7 +14,7 @@ const fetchPost = async (slug) => {
 
 const SinglePostPage = () => {
   const { slug } = useParams();
-  
+
   const { isPending, error, data } = useQuery({
     queryKey: ["post", slug],
     queryFn: () => fetchPost(slug),
@@ -50,9 +50,10 @@ const SinglePostPage = () => {
       {/* content  */}
       <div className="flex flex-col md:flex-row gap-12">
         {/* text  */}
-        <div className="lg:text-lg flex flex-col gap-6 text-justify">
-          {data.content}
-        </div>
+        <div
+          className="lg:text-lg flex flex-col gap-6 text-justify"
+          dangerouslySetInnerHTML={{ __html: data.content }}
+        ></div>
         {/* menu  */}
         <div className="px-4 h-max sticky top-8">
           <h1 className="mb-4 text-sm font-medium">Author</h1>
